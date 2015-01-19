@@ -24,7 +24,8 @@ get '/users/new' do
 end
 
 post '/users' do
-  @user = User.new(:email => params[:email], 
+  @user = User.new(:email => params[:email],
+              :username => params[:username], 
               :password => params[:password],
               :password_confirmation => params[:password_confirmation])  
   if @user.save
@@ -41,8 +42,8 @@ get '/sessions/new' do
 end
 
 post '/sessions' do
-  email, password = params[:email], params[:password]
-  user = User.authenticate(email, password)
+  email, username, password = params[:email], params[:username], params[:password]
+  user = User.authenticate(email, username, password)
   if user
     session[:user_id] = user.id
     redirect to('/')
