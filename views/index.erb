@@ -1,6 +1,6 @@
 <h1>Welcome to Chitter</h1>
 
-Current Tweets:
+Current Peeps:
 <ul>
   <% @tweets.each do |tweet| %>
     <li><a href="<%= tweet.text %>"><%= tweet.text %></a></li>
@@ -9,7 +9,7 @@ Current Tweets:
 
 <div id="tweet-deck">
     <form action="/tweets" method="post">
-      What is your thoughts? <input type="text" name="tweet">
-      <input type="submit" value="tweet">
+      Chirp your thoughts? <input type="text" name="tweet">
+      <input type="submit" value="peep">
     </form>
 </div>

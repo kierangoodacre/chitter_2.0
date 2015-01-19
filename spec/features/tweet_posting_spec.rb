@@ -16,28 +16,8 @@ feature 'Posting tweets' do
 	def add_tweet(tweet)
 		within('#tweet-deck') do
 			fill_in 'tweet', :with => tweet
-			click_button 'tweet'
+			click_button 'peep'
 		end
 	end 
-
-	# scenario "with username attached" do
- #    visit "/"
- #    add_link("http://www.makersacademy.com/",
- #                "Makers Academy",
- #                ['education', 'ruby'])
- #    link = Link.first
- #    expect(link.tags).to include("education")
- #    expect(link.tags).to include("ruby")
- #  end
-
- #  def add_link(url, title, tags = [])
- #    within('#new-link') do
- #      fill_in 'url', :with => url
- #      fill_in 'title', :with => title
- #      # our tags will be space separated
- #      fill_in 'tags', :with => tags.join(' ')
- #      click_button 'Add link'
- #    end
- #  end
 
 end
