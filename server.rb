@@ -6,6 +6,7 @@ require './lib/helpers/application'
 require './lib/data_mapper_setup'
 require 'rack-flash'
 require './lib/tweet'
+require 'sinatra/partial'
 
 set :public_folder, Proc.new { File.join(root, "..", "/public") }
 enable :sessions
@@ -63,4 +64,10 @@ post '/tweets' do
   tweet = params["tweet"]
   Tweet.create(:text => tweet)
   redirect to('/')
+end
+
+get '/tags/:text' do
+  peep = Tweet.first(:text => params[:text])
+  @tweets = peep ? peep.tweets : []
+  erb :index
 end
