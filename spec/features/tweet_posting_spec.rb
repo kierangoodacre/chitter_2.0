@@ -6,6 +6,7 @@ feature 'Posting tweets' do
 	scenario "when browsing the homepage" do
 		expect(Tweet.count).to eq(0)
     visit '/'
+    # save_and_open_page
     add_tweet("First tweet")
     expect(Tweet.count).to eq(1)
     tweet = Tweet.first

@@ -1,8 +1,15 @@
 <h1>Welcome to Chitter</h1>
 
+Current Tweets:
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li><a href="<%= tweet.text %>"><%= tweet.text %></a></li>
+  <% end %>
+</ul>
+
 <div id="tweet-deck">
-  <form action="/tweets" method="post">
-    Tweet: <input type="text" name="tweet">
-    <input type="submit" value="Add tweet">
-  </form>
+    <form action="/tweets" method="post">
+      What is your thoughts? <input type="text" name="tweet">
+      <input type="submit" value="tweet">
+    </form>
 </div>

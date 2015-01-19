@@ -7,14 +7,15 @@ require './lib/data_mapper_setup'
 require 'rack-flash'
 require './lib/tweet'
 
-
+set :public_folder, Proc.new { File.join(root, "..", "/public") }
 enable :sessions
 set :session_secret, 'super secret'
 use Rack::Flash
 use Rack::MethodOverride
 
 get '/' do
-	erb :index
+  @tweets = Tweet.all
+  erb :index
 end
 
 get '/users/new' do
@@ -58,9 +59,7 @@ delete '/sessions' do
 end
 
 post '/tweets' do
-  p 'got here'
   tweet = params["tweet"]
-  p Tweet
   Tweet.create(:text => tweet)
   redirect to('/')
 end
