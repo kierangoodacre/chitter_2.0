@@ -1,7 +1,8 @@
-env = ENV["RACK_ENV"] || "development"
-DataMapper.setup(:default, "postgres://localhost:15432/bookmark_manager_test")
+require './lib/tweet'
+require './lib/user'
 
+env = ENV["RACK_ENV"] || "development"
+
+DataMapper.setup(:default, "postgres://localhost:15432/tweet_manager_development")
 
 DataMapper.finalize
-
-DataMapper.auto_upgrade!

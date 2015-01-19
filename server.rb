@@ -1,4 +1,3 @@
-
 require 'sinatra'
 require 'data_mapper'
 require './lib/link'
@@ -6,6 +5,7 @@ require './lib/user'
 require './lib/helpers/application'
 require './lib/data_mapper_setup'
 require 'rack-flash'
+require './lib/tweet'
 
 
 enable :sessions
@@ -54,5 +54,13 @@ end
 delete '/sessions' do
   flash[:notice] = "Good bye!"
   session[:user_id] = nil
+  redirect to('/')
+end
+
+post '/tweets' do
+  p 'got here'
+  tweet = params["tweet"]
+  p Tweet
+  Tweet.create(:text => tweet)
   redirect to('/')
 end
