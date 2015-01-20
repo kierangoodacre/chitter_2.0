@@ -8,7 +8,7 @@ require 'rack-flash'
 require './lib/tweet'
 require 'sinatra/partial'
 
-set :public_folder, Proc.new { File.join(root, "..", "/public") }
+set :public_folder, Proc.new { File.join(root, ".", "public") }
 enable :sessions
 set :session_secret, 'super secret'
 use Rack::Flash
